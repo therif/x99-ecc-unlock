@@ -13,12 +13,12 @@ otechie:
 lfx_crowdfunding:
 
 # Custom sponsorship links
-custom:
-  - https://paypal.me/galonair
-  - https://saweria.co/therif
-  - https://sociabuzz.com/therif/tribe
+# custom:
+  # - https://paypal.me/galonair
+  # - https://saweria.co/therif
+  # - https://sociabuzz.com/therif/tribe
 
-#custom: ['https://paypal.me/galonair', 'https://saweria.co/therif', 'https://sociabuzz.com/therif/tribe']
+custom: ['https://paypal.me/galonair', 'https://saweria.co/therif', 'https://sociabuzz.com/therif/tribe']
 
 
 

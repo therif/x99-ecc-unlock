@@ -1,6 +1,6 @@
 # X99 ECC Unlock
 
-Experimental documentation and tooling for enabling functional ECC on a tested Intel X99/C610 firmware where firmware disabled ECC during memory initialization.
+Reverse-engineering notes and tooling for enabling functional ECC on a tested Intel X99/C610 platform where the stock firmware disables ECC during memory initialization.
 
 ## Verified system
 - Intel C610/X99 (Wellsburg)
@@ -26,3 +26,24 @@ Shared PEI platform-info GUID `1E2ACC41-E26A-483D-AFC7-A056C34E087B` contains pl
 The earlier `+0x2336C` forced-branch experiment is NOT part of the final solution; its `74 07` form must remain/restored.
 
 No complete proprietary BIOS/SPI, ME dump, or board-specific NVRAM is included. Read `DISCLAIMER.md` and the full `docs/` before use.
+
+## ❤️ Support / Donation
+
+X99 ECC Unlock is free and open source.
+
+If this project helped you enable ECC, saved you some reverse-engineering
+time, or helped with your own X99/C610 research, you can optionally support
+further testing and documentation.
+
+Donations are completely optional. The documentation, research, and patching
+tools will remain freely available.
+
+- [GitHub Sponsors](https://github.com/sponsors/therif)
+- [PayPal](https://paypal.me/galonair)
+- [Saweria](https://saweria.co/therif)
+- [SociaBuzz](https://sociabuzz.com/therif/tribe)
+
+You can also support the project by starring the repository, reporting results
+on other X99/C610 boards, or contributing additional firmware analysis.
+
+Thank you for supporting independent hardware and firmware research.

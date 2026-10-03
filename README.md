@@ -2,6 +2,9 @@
 
 Reverse-engineering notes and tooling for enabling functional ECC on a tested Intel X99/C610 platform where the stock firmware disables ECC during memory initialization.
 
+> **Status:** Working and verified on the tested system. Linux `sb_edac`
+> successfully registers both Haswell memory controllers after the patch.
+
 ## Verified system
 - Intel C610/X99 (Wellsburg)
 - Intel Xeon E5-2698B v3, family 6, model 63 (0x3F), stepping 2
@@ -10,14 +13,53 @@ Reverse-engineering notes and tooling for enabling functional ECC on a tested In
 - Target PEIM: `UncoreInitPeim`, GUID `D71C8BA4-4AF2-4D0D-B1BA-F2409F0C20D3`
 
 ## Verified result
-Before: MCMTR `00050f00 / 00010f00`, EDAC reported `has DIMMs, but ECC is disabled`, SMBIOS reported `None`.
 
-After the final patch and cold boot: MCMTR `00050f04 / 00010f04`; Linux `sb_edac` registered `Haswell SrcID#0_Ha#0` and `Haswell SrcID#0_Ha#1`; CE/UE counters appeared at 0; SMBIOS reported `Multi-bit ECC`.
+### Before
+```text
+MCMTR:
+00050f00
+00010f00
+
+EDAC:
+has DIMMs, but ECC is disabled
+
+SMBIOS:
+Error Correction Type: None
+```
+### After
+```text
+MCMTR:
+00050f04
+00010f04
+
+EDAC:
+Haswell SrcID#0_Ha#0
+Haswell SrcID#0_Ha#1
+
+CE: 0
+UE: 0
+
+SMBIOS:
+Error Correction Type: Multi-bit ECC
+```
 
 ## Root cause
 IFR exposed `ECC Support` at `IntelSetup + 0x11FF` (`0=Disable, 1=Enable, 2=Auto`). Auto and Enable both initially set internal bit `0x00020000`, so changing Auto to Enable alone was insufficient.
 
 Shared PEI platform-info GUID `1E2ACC41-E26A-483D-AFC7-A056C34E087B` contains platform class `0x13` at payload `+0x5E` on the tested firmware. `UncoreInitPeim` explicitly clears the ECC bit for platform classes `0x13/0x14`.
+
+## ⚠️ Compatibility
+
+This is **not a universal X99 ECC patch**.
+
+The documented offsets were observed on the exact firmware used during this
+research. Different motherboard vendors, BIOS revisions, or Intel reference
+code versions may place the same logic at different offsets.
+
+**Do not patch another firmware by absolute offset alone.**
+
+Always verify the complete instruction signature documented in
+[`reference/patch-map.md`](reference/patch-map.md) before modifying firmware.
 
 ## Final patch set
 1. ECC_MIX: tested full-SPI offset `0xE403F0`, `12 -> 16`.

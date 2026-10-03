@@ -1,0 +1,9 @@
+# Reference Hashes
+Binaries are intentionally not distributed.
+```text
+Original full SPI: 56a6b155a4ab2dbb342d4718394ad5d71e88ab578d35c33e902ad9c7adbc2620
+ECC_MIX static: 5bdbae84bb13d2fde3de86fd50da7b4a1831c8a5a1d81b9632f5ba5ae53b3b17
+Static final: 1848939945ef51753683cc19968e980976cc19490154e24aa17f59bbb181b4c2
+Final live/readback: 0fe467a36f8162208653095517107e84148268546f30b01d67841623b7c71aee
+Patched Uncore PE32: 1515350a4f3d3877b9f3d133f1913c004a0eec89b4df10c4bf01b5b44c0af08d
+```

@@ -1,0 +1,5 @@
+MCMTR 00050f04 00010f04
+EDAC MC0: Haswell SrcID#0_Ha#0
+EDAC MC1: Haswell SrcID#0_Ha#1
+CE=0 UE=0
+SMBIOS: Multi-bit ECC

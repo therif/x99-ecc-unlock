@@ -1,0 +1,3 @@
+MCMTR 00050f00 00010f00
+EDAC: has DIMMs, but ECC is disabled
+SMBIOS: None

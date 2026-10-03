@@ -1,0 +1,2 @@
+# Disclaimer
+Firmware modification can make a motherboard unbootable and may require an external SPI programmer. These offsets/bytes were verified only on the development firmware. Never patch another revision by absolute offset alone. Keep multiple verified backups, verify exact context, verify generated images before flashing, perform readback verification, and have a recovery method. No complete proprietary BIOS is distributed here.
